@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<link rel="stylesheet"
+      href="{ %static 'blogpost.css'%}"/>
+{% block title %}Blogpost{% endblock title %}
+
+{% block body %}
+
+{% comment %} <header>
+    
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One - Set the background image for this slide in the line below -->
+      <div class="carousel-item active" style="background-image: <img src="{% static "dev.jpg" %}"> ">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="display-4">First Slide</h3>
+          <p class="lead">This is a description for the first slide.</p>
+        </div>
+      </div>
+      <!-- Slide Two - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image:  url('https://source.unsplash.com/wfh8dDlNFOk/1920x1080')">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="display-4">Second Slide</h3>
+          <p class="lead">This is a description for the second slide.</p>
+        </div>
+      </div>
+      <!-- Slide Three - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('https://source.unsplash.com/O7fzqFEfLlo/1920x1080')">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="display-4">Third Slide</h3>
+          <p class="lead">This is a description for the third slide.</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+  </div>
+</header> {% endcomment %}
+
+
+<!-- Page Content -->
+{% for post in Post %}
+<div class='container'>
+<section class="py-5">
+  <div class="container">
+    <h1 class="font-weight-light">{{post.title}}</h1>
+    
+    <h6>{{post.timestamp}} , by <a href="/about">{{post.author}}</a> </h6> 
+    <br>
+    <div class="fb-like" data-href="http://127.0.0.1:8000/blog/{{post.slug}}" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
+    <br>
+    <p class="lead">{{post.content}} </p>
+    <br>
+    <h4>Comments</h4>
+    <hr>
+    <br>
+    <div class="fb-comments" data-href="http://127.0.0.1:8000/blog/{{post.slug}}" data-width="" data-numposts="5"></div>
+
+  </div>
+</section>
+</div>
+{% endfor %}
+
+{% endblock body %} 

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{ %static 'css/signup.css'%}">
+{% block title %}Login to your account!{% endblock title %}
+{% block body %}
+
+    <div style="position: absolute;
+    left: 1.5%;
+    top:3%;
+    display: inline;">
+    <a href="SearchTrain.html"><img src="/css/homepage-icon.png" width="10%"></a>
+    </div>
+	<div class="container" style="width:400px; margin-top:10px"> 
+        <header>
+            <div class="Railgaadi">
+                <h1>Share your Story</h1>
+            </div>
+        </header>
+        <br>
+        <br>
+        <div class="su-form">
+            
+            {% comment %} <img src="logo.png" width="20%" alt="logo"> {% endcomment %}
+            <div style="color: green; font-size: 20px;">Log in To Your Account</div>
+            <div style="margin-right: 37%" class="InputLabel">Username</div>
+            <form action='/login' method='POST'>
+            <input class="inputs" type="username" placeholder="Type a username" name="username">
+            <br>
+            <br>
+            
+            <div style="margin-right: 37%" class="InputLabel">Password</div>
+            <input class="inputs" type="password" placeholder="Your password" name="password">
+            <br>
+            <br>
+
+            {% csrf_token %}
+            <button style="font-size: 120%" class="su-btn">Log In</button>
+            </form>
+            <hr>
+            <p class="or">Or</p>
+            <p style="font-style: italic;">Don't have an account?  <a href="/signup">Sign up</a></p>
+        </div> 
+    </div>
+
+{% endblock body %}
